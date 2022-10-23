@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Movie {
     public static final int CHILDREN = 2;
     public static final int REGULAR = 0;
@@ -14,6 +13,11 @@ public class Movie {
 
     private String title;
     private int priceCode;
+
+    public Movie(String title, int priceCode) {
+        this.title = title;
+        setPriceCode(priceCode);
+    }
 
     public double getCharge(int daysRented) {
         double thisAmount = 0;
