@@ -17,7 +17,6 @@ public class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         String result = "Rental Record for " + this.name + "\n";
@@ -29,13 +28,21 @@ public class Customer {
             // 이 대여에 대한 요금 계산 결과 표시
             result += "\t" + each.getMovie().getTitle() + "\t"
                     + each.getCharge() + "\n";
-            totalAmount += each.getCharge();
         }
 
-        result += "Amount owed is " + totalAmount + "\n";
+        result += "Amount owed is " + getTotalCharge() + "\n";
         result += "You earned " + frequentRenterPoints + "frequent renter points";
             
         return result;
     }
 
+    private double getTotalCharge() {
+        double result = 0;
+        Enumeration rentals = this.rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            result += each.getCharge();
+        }
+        return result;
+    }
 }
