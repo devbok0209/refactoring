@@ -24,15 +24,7 @@ public class Customer {
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-
-            // 포인트 (frequent renter points) 추가
-            frequentRenterPoints ++;
-
-            // 최신 (new release)를 이틀 이상 대여하는 겨우 추가 포인트 제공
-            if((each.getMovie().getPriceCode()) == Movie.NEW_RELEASE
-                && each.getDaysRented() > 1 ) {
-                frequentRenterPoints ++;
-            }
+            frequentRenterPoints += each.getFrequentRenterPoints();
 
             // 이 대여에 대한 요금 계산 결과 표시
             result += "\t" + each.getMovie().getTitle() + "\t"
