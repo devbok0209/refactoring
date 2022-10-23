@@ -23,11 +23,7 @@ public class Customer {
         String result = "Rental Record for " + this.name + "\n";
 
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
-
-            // 각 영화에 대한 요금 결정
-            thisAmount = each.getCharge();
 
             // 포인트 (frequent renter points) 추가
             frequentRenterPoints ++;
@@ -40,8 +36,8 @@ public class Customer {
 
             // 이 대여에 대한 요금 계산 결과 표시
             result += "\t" + each.getMovie().getTitle() + "\t"
-                    + thisAmount + "\n";
-            totalAmount += thisAmount;
+                    + each.getCharge() + "\n";
+            totalAmount += each.getCharge();
         }
 
         result += "Amount owed is " + totalAmount + "\n";
