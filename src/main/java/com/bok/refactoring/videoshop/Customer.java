@@ -34,6 +34,24 @@ public class Customer {
         return result;
     }
 
+    public String htmlStatement() {
+        Enumeration rentals = this.rentals.elements();
+        String result = "<H1>Rental Record for <EM>" + this.name + "</EM><H1><P>\n";
+
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+
+            // 이 대여에 대한 요금 계산 결과 표시
+            result += each.getMovie().getTitle() + ": "
+                    + each.getCharge() + "<BR>\n";
+        }
+
+        result += "<P>Amount owed is <EM>" + getTotalCharge() + "</EM><P>\n";
+        result += "You earned <EM>" + getTotalFrequentRenterPoints() + "</EM> frequent renter points<P>";
+
+        return result;
+    }
+
     private double getTotalCharge() {
         double result = 0;
         Enumeration rentals = this.rentals.elements();
