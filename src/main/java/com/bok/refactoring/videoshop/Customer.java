@@ -27,7 +27,7 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
 
             // 각 영화에 대한 요금 결정
-            thisAmount = amountFor(each);
+            thisAmount = each.getCharge();
 
             // 포인트 (frequent renter points) 추가
             frequentRenterPoints ++;
@@ -48,10 +48,6 @@ public class Customer {
         result += "You earned " + frequentRenterPoints + "frequent renter points";
             
         return result;
-    }
-
-    private double amountFor(Rental aRental) {
-        return aRental.getCharge();
     }
 
 }
